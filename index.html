@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Quiz Game</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Roboto+Slab:wght@400;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+        <div class="container">
+            <h1 class="main-title">
+                <span class="title-part">ULTIMATE</span>
+                <span class="title-part">QUIZ</span>
+                <span class="title-part">GAME</span>
+            </h1>
+            <p class="subtitle">Test your knowledge across multiple topics!</p>
+            <button id="startBtn" class="btn btn-primary pulse">Start Quiz</button>
+        </div>
+        <div class="background-animation"></div>
+    </div>
+
+    <!-- Topic Selection Screen -->
+    <div id="topicScreen" class="screen">
+        <div class="container">
+            <h2 class="screen-title">Choose Your Topic</h2>
+            <div class="topics-grid">
+                <div class="topic-card" data-topic="marvel">
+                    <div class="topic-icon">🦸‍♂️</div>
+                    <h3>Marvel</h3>
+                    <p>Superheroes & Comic Universe</p>
+                </div>
+                <div class="topic-card" data-topic="space">
+                    <div class="topic-icon">🚀</div>
+                    <h3>Space</h3>
+                    <p>Cosmos & Astronomy</p>
+                </div>
+                <div class="topic-card" data-topic="history">
+                    <div class="topic-icon">🏛️</div>
+                    <h3>History</h3>
+                    <p>World Events & Civilizations</p>
+                </div>
+                <div class="topic-card" data-topic="sports">
+                    <div class="topic-icon">⚽</div>
+                    <h3>Sports</h3>
+                    <p>Games & Athletics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Difficulty Selection Screen -->
+    <div id="difficultyScreen" class="screen">
+        <div class="container">
+            <h2 class="screen-title">Select Difficulty</h2>
+            <div class="difficulty-options">
+                <div class="difficulty-card" data-difficulty="easy">
+                    <div class="difficulty-icon">😊</div>
+                    <h3>Easy</h3>
+                    <p>Perfect for beginners</p>
+                </div>
+                <div class="difficulty-card" data-difficulty="normal">
+                    <div class="difficulty-icon">😐</div>
+                    <h3>Normal</h3>
+                    <p>Standard challenge</p>
+                </div>
+                <div class="difficulty-card" data-difficulty="hard">
+                    <div class="difficulty-icon">😤</div>
+                    <h3>Hard</h3>
+                    <p>Expert level</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Count Selection Screen -->
+    <div id="countScreen" class="screen">
+        <div class="container">
+            <h2 class="screen-title">How Many Questions?</h2>
+            <div class="count-options">
+                <div class="count-card" data-count="5">
+                    <h3>5</h3>
+                    <p>Quick Round</p>
+                </div>
+                <div class="count-card" data-count="10">
+                    <h3>10</h3>
+                    <p>Standard Game</p>
+                </div>
+                <div class="count-card" data-count="15">
+                    <h3>15</h3>
+                    <p>Extended Challenge</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Countdown Screen -->
+    <div id="countdownScreen" class="screen">
+        <div class="container">
+            <div class="countdown-display">
+                <div id="countdownNumber">3</div>
+                <div class="countdown-text">Get Ready!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+        <div class="container">
+            <div class="quiz-header">
+                <div class="quiz-progress">
+                    <span id="questionCounter">Question 1 of 10</span>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="quiz-stats">
+                    <div class="stat">
+                        <span class="stat-label">Score:</span>
+                        <span id="currentScore">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span id="timer">30</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h2 id="questionText" class="question-text">Question will appear here</h2>
+                <div id="answersContainer" class="answers-container">
+                    <!-- Answer options will be generated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+        <div class="container">
+            <div class="results-content">
+                <h2 class="results-title">Quiz Complete!</h2>
+                <div class="final-score">
+                    <div class="score-display">
+                        <span id="finalScore">0</span>
+                        <span class="score-separator">/</span>
+                        <span id="totalQuestions">10</span>
+                    </div>
+                    <div id="scorePercentage" class="score-percentage">0%</div>
+                </div>
+                <div id="resultMessage" class="result-message">Great job!</div>
+                <div class="results-actions">
+                    <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+                    <button id="changeTopicBtn" class="btn btn-secondary">Change Topic</button>
+                </div>
+            </div>
+            <div id="perfectScoreAnimation" class="perfect-score-animation"></div>
+        </div>
+    </div>
+
+    <!-- Audio Elements - Using generated sounds for reliable playback -->
+    <audio id="clickSound" preload="auto"></audio>
+    <audio id="hoverSound" preload="auto"></audio>
+    <audio id="correctSound" preload="auto"></audio>
+    <audio id="incorrectSound" preload="auto"></audio>
+    <audio id="celebrationSound" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
